@@ -16,12 +16,15 @@ module AppStore
       end
 
       # => Search API
-      get :app do
+      get :app, :rabl => "api/v1/apps/app.json" do
         begin
           @app = App.find_by(name: params[:name].downcase)
           if @app.blank?
             error!({ error: "No app found."})
+          else
+            @app
           end
+
         rescue Timeout::Error => e
           error!({ error: "Server Busy"}, 500)
         rescue Exception => e
