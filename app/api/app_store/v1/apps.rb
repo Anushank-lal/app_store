@@ -18,7 +18,7 @@ module AppStore
       # => Search API
       get :app do
         begin
-          @app = App.find_by(name: params[:name])
+          @app = App.find_by(name: params[:name].downcase)
           if @app.blank?
             error!({ error: "No app found."})
           end
