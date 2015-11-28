@@ -15,9 +15,19 @@ ActiveAdmin.register App do
 permit_params :name, :status, :url, :image
 
 controller do
-  def site_params
+  def app_params
     params.require(:app).permit(App.attribute_names.map(&:to_sym))
   end
 end
+
+  begin
+    sidebar "Details", only: [:show] do
+      ul do
+        li link_to("Urls", admin_app_urls_path(app))
+        li link_to("Images", admin_app_images_path(app))
+
+      end
+    end
+  end
 
 end
