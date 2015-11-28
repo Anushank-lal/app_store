@@ -12,7 +12,7 @@ ActiveAdmin.register App do
 #   permitted << :other if resource.something?
 #   permitted
 # end
-permit_params :name, :status, :url, :image
+permit_params :name, :status
 
 controller do
   def app_params
@@ -23,8 +23,8 @@ end
   begin
     sidebar "Details", only: [:show] do
       ul do
-        li link_to("Urls", admin_app_urls_path(app))
-        li link_to("Images", admin_app_images_path(app))
+        li link_to("Adds", admin_app_adds_path(app))
+        #li link_to("Images", admin_app_images_path(app))
 
       end
     end

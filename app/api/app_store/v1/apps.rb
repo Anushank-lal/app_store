@@ -22,6 +22,7 @@ module AppStore
           if @app.blank?
             error!({ error: "No app found."})
           else
+            @selected_add = @app.adds.active_adds.random_add
             @app
           end
 

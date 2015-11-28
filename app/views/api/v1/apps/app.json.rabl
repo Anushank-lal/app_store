@@ -1,13 +1,14 @@
 if @app.status == true
 object @app
 
-node(:urls) do
-@app.urls.active_urls.map{|x| x.url}
+node(:url) do
+@selected_add.url
 end
 
-node(:images) do
-@app.images.active_images.map{|x| x.image}
+node(:image) do
+@selected_add.image
 end
+
 
 else
 node(:status) do
