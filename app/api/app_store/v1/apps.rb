@@ -19,12 +19,9 @@ module AppStore
       get :app, :rabl => "api/v1/apps/app.json" do
         begin
           @app = App.find_by(name: params[:name].downcase)
-          if @app.blank?
-            error!({ error: "No app found."})
-          else
-            @selected_add = @app.adds.active_adds.random_add
-            @app
-          end
+          @app = App.find_by(name: "default") if @app.blank?
+          @selected_add = @app.adds.active_adds.random_add if @app.present?
+          error!({ error: "Please set default app with name: 'default'."}) if @app.blank?
 
         rescue Timeout::Error => e
           error!({ error: "Server Busy"}, 500)

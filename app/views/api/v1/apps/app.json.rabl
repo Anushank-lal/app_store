@@ -1,4 +1,3 @@
-if @app.status == true
 object @app
 
 node(:url) do
@@ -10,11 +9,4 @@ node(:image) do
 end
 
 
-else
-node(:status) do
-false
-end
-end
-
-
-attributes :id, :name, :url, :image
+attributes :id, :name, :url, :image, :status
