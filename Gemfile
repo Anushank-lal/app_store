@@ -53,3 +53,4 @@ gem 'grape'#, :git => 'https://github.com/intridea/grape.git'
 gem 'rabl'#, "0.11.4" #, :git => 'https://github.com/intridea/grape.git'
 # Grape-rabl middleware
 gem 'grape-rabl'
+gem 'rename' # rails g rename:app_to name_of_app
